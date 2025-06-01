@@ -3,33 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PlateVision - Number Plate Detector</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>Number Plate Detection</title>
+  <link rel="stylesheet" href="/static/css/style.css">
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
-  <div class="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-8">
-    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">PlateVision</h1>
-    <form id="uploadForm" class="space-y-6">
-      <div class="flex flex-col items-center border-2 border-dashed border-gray-300 p-6 rounded-lg cursor-pointer hover:border-indigo-400 transition" onclick="document.getElementById('fileInput').click()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0l-4 4m4-4l4 4M17 8v12m0 0l-4-4m4 4l4-4" />
-        </svg>
-        <p class="text-gray-500 mt-2">Click to upload an image</p>
-        <input id="fileInput" type="file" accept="image/*" class="hidden" required>
-      </div>
-      <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition">Detect Plate</button>
-      <div id="loader" class="text-center text-indigo-600 hidden">
-        <svg class="animate-spin h-5 w-5 inline-block mr-2" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-        </svg>
-        Processing...
-      </div>
+<body>
+  <div class="container">
+    <h1>Number Plate Detection</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <input type="file" name="file" id="file" accept="image/*" required>
+      <button type="submit">Upload</button>
     </form>
-    <div id="previewContainer" class="mt-8 hidden">
-      <canvas id="resultCanvas" class="w-full border rounded-lg shadow"></canvas>
-      <div class="mt-4 p-4 bg-gray-50 rounded-lg shadow text-lg text-center font-bold text-gray-700" id="resultText"></div>
+    <div id="preview">
+      <img id="imagePreview" style="max-width: 100%; display: none;"/>
+      <p id="resultText"></p>
     </div>
   </div>
   <script src="/static/js/script.js"></script>

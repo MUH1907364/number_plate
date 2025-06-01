@@ -39,7 +39,6 @@ def upload():
         first_box = [x1, y1, x2, y2]
         cropped = img[y1:y2, x1:x2]
 
-        # EasyOCR works with RGB
         rgb = cv2.cvtColor(cropped, cv2.COLOR_BGR2RGB)
         results = reader.readtext(rgb)
         if results:
