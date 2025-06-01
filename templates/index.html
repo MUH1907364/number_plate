@@ -15,7 +15,11 @@
       <input type="file" name="file" id="file" accept="image/*" required />
       <button type="submit">Detect Plate</button>
     </form>
-
+  <label for="mode">Detection Mode:</label>
+<select name="mode" id="mode">
+  <option value="local">Local YOLO Model</option>
+  <option value="api">External API Service</option>
+</select>
     {% if plate_text %}
       <div class="result">
         <h3>Detected Plate:</h3>
